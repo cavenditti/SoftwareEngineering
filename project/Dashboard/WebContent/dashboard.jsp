@@ -28,28 +28,28 @@
 	<div id="ContainerTails">
 		
 	<%
-	//visualizza le aree
-	if(!request.getParameterMap().containsKey("area"))
-		out.println(AggregateHandler.listAreas());
-		
-	//visualizza gli edifici
-	if(request.getParameterMap().containsKey("area") && !request.getParameterMap().containsKey("building"))
-		out.println(AggregateHandler.listBuildings(request.getParameter("area")));
+				//visualizza le aree
+					if(!request.getParameterMap().containsKey("area"))
+						out.println(AggregateHandler.listAreas());
+						
+					//visualizza gli edifici
+					if(request.getParameterMap().containsKey("area") && !request.getParameterMap().containsKey("building"))
+						out.println(AggregateHandler.listBuildings(request.getParameter("area")));
 
-	//visualizza i piani
-	if(request.getParameterMap().containsKey("building")&& !request.getParameterMap().containsKey("floor"))
-		out.println(AggregateHandler.listFloors(request.getParameter("area"), request.getParameter("building")));
-	
-	//visualizza le stanze
-	if(request.getParameterMap().containsKey("floor") && !request.getParameterMap().containsKey("room"))
-		out.println(AggregateHandler.listRooms(request.getParameter("area"), request.getParameter("building"), request.getParameter("floor")));
-	
-	//visualizza i sensori
-	if(request.getParameterMap().containsKey("room")){
-		  response.setIntHeader("Refresh", 1); //time in seconds
-		out.println(AggregateHandler.listSensors(request.getParameter("room")));
-		}
-	%>	
+					//visualizza i piani
+					if(request.getParameterMap().containsKey("building")&& !request.getParameterMap().containsKey("floor"))
+						out.println(AggregateHandler.listFloors(request.getParameter("area"), request.getParameter("building")));
+					
+					//visualizza le stanze
+					if(request.getParameterMap().containsKey("floor") && !request.getParameterMap().containsKey("room"))
+						out.println(AggregateHandler.listRooms(request.getParameter("area"), request.getParameter("building"), request.getParameter("floor")));
+					
+					//visualizza i sensori
+					if(request.getParameterMap().containsKey("room")){
+						  response.setIntHeader("Refresh", 1); //time in seconds
+						out.println(AggregateHandler.listSensors(request.getParameter("area"), request.getParameter("building"), request.getParameter("floor"), request.getParameter("room")));
+						}
+			%>	
 
 
 	</div>

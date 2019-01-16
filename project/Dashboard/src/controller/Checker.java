@@ -2,8 +2,8 @@ package controller;
 import model.Sensor;
 
 public class Checker {
-	public static void sensorTreshold(int id, int value) throws InterruptedException{
-		//System.out.println("into checker");
+	public static void newSensorValue(int id, int value) throws InterruptedException{
+		
 		Sensor s = Cache.getSensor(id);
 		if(s!=null) {
 			if(value>s.getTreshold())  
